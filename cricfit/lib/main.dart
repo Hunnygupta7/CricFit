@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         title: 'CricFit',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          fontFamily: GoogleFonts.poppins().fontFamily,
+          fontFamily: GoogleFonts.montserrat().fontFamily,
         ),
         home: const Splash());
   }
