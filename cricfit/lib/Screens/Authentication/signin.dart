@@ -1,3 +1,4 @@
+import 'package:cricfit/Screens/Authentication/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,6 +19,7 @@ class _SignInScreenState extends State<SignInScreen> {
       child: Scaffold(
         backgroundColor: backgroundColor,
         body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Container(
             margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: Column(
@@ -140,7 +142,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       borderRadius: BorderRadius.all(Radius.circular(10))),
                   child: const Center(
                     child: Text(
-                      "Sign In",
+                      "SIGN IN",
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -148,11 +150,18 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Container(
-                  alignment: Alignment.center,
-                  child: const Text("Tap here if u don't have an account",
-                      style: TextStyle(color: blackColor)),
-                )
+                GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SignUpScreen()));
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: const Text("Tap here if u don't have an account",
+                          style: TextStyle(color: blackColor)),
+                    ))
               ],
             ),
           ),

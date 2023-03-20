@@ -39,6 +39,7 @@ dependencies:
   lottie: ^2.2.0
   google_fonts: ^4.0.3
   show_up_animation: ^2.0.0
+  country_list_picker: ^1.0.2
 
 dev_dependencies:
   flutter_test:
