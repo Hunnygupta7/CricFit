@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../Constants/colors.dart';
+import '../ForgetPassword/emailscreen_fp.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -130,8 +131,15 @@ class _SignInScreenState extends State<SignInScreen> {
                           });
                         }),
                     const Text("Rember Me"),
-                    const SizedBox(width: 100),
-                    const Text("Forgot Password?"),
+                    const SizedBox(width: 80),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const EmailScreenFP()));
+                        },
+                        child: const Text("Forgot Password?")),
                   ],
                 ),
                 Container(
