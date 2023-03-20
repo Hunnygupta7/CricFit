@@ -49,7 +49,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.17.0"
-<<<<<<< HEAD
   convert:
     dependency: transitive
     description:
@@ -66,8 +65,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
-=======
->>>>>>> origin/master
   crypto:
     dependency: transitive
     description:
@@ -234,47 +231,26 @@ packages:
     dependency: transitive
     description:
       name: path_provider_android
-<<<<<<< HEAD
       sha256: "019f18c9c10ae370b08dce1f3e3b73bc9f58e7f087bb5e921f06529438ac0ae7"
       url: "https://pub.dev"
     source: hosted
     version: "2.0.24"
-=======
-      sha256: "7623b7d4be0f0f7d9a8b5ee6879fc13e4522d4c875ab86801dee4af32b54b83e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.23"
->>>>>>> origin/master
   path_provider_foundation:
     dependency: transitive
     description:
       name: path_provider_foundation
-<<<<<<< HEAD
       sha256: "12eee51abdf4d34c590f043f45073adbb45514a108bd9db4491547a2fd891059"
       url: "https://pub.dev"
     source: hosted
     version: "2.2.0"
-=======
-      sha256: eec003594f19fe2456ea965ae36b3fc967bc5005f508890aafe31fa75e41d972
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.2"
->>>>>>> origin/master
   path_provider_linux:
     dependency: transitive
     description:
       name: path_provider_linux
-<<<<<<< HEAD
       sha256: "2ae08f2216225427e64ad224a24354221c2c7907e448e6e0e8b57b1eb9f10ad1"
       url: "https://pub.dev"
     source: hosted
     version: "2.1.10"
-=======
-      sha256: "525ad5e07622d19447ad740b1ed5070031f7a5437f44355ae915ff56e986429a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.9"
->>>>>>> origin/master
   path_provider_platform_interface:
     dependency: transitive
     description:
@@ -287,17 +263,10 @@ packages:
     dependency: transitive
     description:
       name: path_provider_windows
-<<<<<<< HEAD
       sha256: f53720498d5a543f9607db4b0e997c4b5438884de25b0f73098cc2671a51b130
       url: "https://pub.dev"
     source: hosted
     version: "2.1.5"
-=======
-      sha256: "642ddf65fde5404f83267e8459ddb4556316d3ee6d511ed193357e25caa3632d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.4"
->>>>>>> origin/master
   platform:
     dependency: transitive
     description:
@@ -314,7 +283,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
-<<<<<<< HEAD
   pointycastle:
     dependency: transitive
     description:
@@ -323,8 +291,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.7.0"
-=======
->>>>>>> origin/master
   process:
     dependency: transitive
     description:
@@ -333,7 +299,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.2.4"
-<<<<<<< HEAD
   provider:
     dependency: transitive
     description:
@@ -350,8 +315,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
-=======
->>>>>>> origin/master
   sky_engine:
     dependency: transitive
     description: flutter
@@ -438,10 +401,5 @@ packages:
     source: hosted
     version: "1.0.0"
 sdks:
-<<<<<<< HEAD
   dart: ">=2.18.4 <3.0.0"
   flutter: ">=3.3.0"
-=======
-  dart: ">=2.19.3 <3.0.0"
-  flutter: ">=3.0.0"
->>>>>>> origin/master
