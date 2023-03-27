@@ -1,8 +1,11 @@
+import 'package:cricfit/LetsGo.dart';
+import 'package:cricfit/Welcome.dart';
 import 'package:cricfit/searchAccount.dart';
 import 'package:cricfit/signUp.dart';
 import 'package:cricfit/verifyaccount.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'Personalized.dart';
 import 'SplashScreen/splash.dart';
 
 void main() {
@@ -21,6 +24,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           fontFamily: GoogleFonts.montserrat().fontFamily,
         ),
-        home: const searchaccount());
+        home: Welcome());
   }
 }
