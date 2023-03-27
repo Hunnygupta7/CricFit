@@ -1,3 +1,4 @@
+import 'package:cricfit/Welcome.dart';
 import 'package:cricfit/searchAccount.dart';
 import 'package:cricfit/signUp.dart';
 import 'package:cricfit/verifyaccount.dart';
@@ -21,6 +22,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           fontFamily: GoogleFonts.montserrat().fontFamily,
         ),
-        home: const searchaccount());
+        home: Welcome());
   }
 }
