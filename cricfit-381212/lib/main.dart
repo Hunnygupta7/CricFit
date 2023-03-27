@@ -21,6 +21,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           fontFamily: GoogleFonts.montserrat().fontFamily,
         ),
-        home: const Splash());
+        home: const searchaccount());
   }
 }

@@ -80,17 +80,17 @@ class _searchaccountState extends State<searchaccount> {
               Container(
                 width: double.infinity,
                 height: 50,
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: "SEARCH",
-                    contentPadding: const EdgeInsets.symmetric(
-                        vertical: 15, horizontal: 150),
-                    hintStyle: TextStyle(color: white),
-                    filled: true,
-                    fillColor: orange,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide.none,
+                child: Center(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: "SEARCH",
+                      hintStyle: TextStyle(color: white),
+                      filled: true,
+                      fillColor: orange,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide.none,
+                      ),
                     ),
                   ),
                 ),
