@@ -1,6 +1,4 @@
-import 'package:cricfit/searchAccount.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'Personalized.dart';
 import 'colors.dart';
 
@@ -33,6 +31,7 @@ class _WelcomeState extends State<Welcome> {
                   Column(
 
                   children: [
+
                   Row(children: [
                   Image.asset(
                         "assets/icon.png",
@@ -45,6 +44,19 @@ class _WelcomeState extends State<Welcome> {
                   TextStyle(fontWeight: FontWeight.bold, color: orange,fontSize: 34.2),
                   )
                   ]),
+
+            Row(children: [
+            Image.asset(
+                  "assets/icon.png",
+                  width: 35,
+                  height: 35,
+            ),
+          const Text(
+            " CricFit",
+            style:
+            TextStyle(fontWeight: FontWeight.bold, color: orange,fontSize: 34.2),
+          )
+          ]),
                     Image.asset("assets/Welcome.png",
                     width:350,
                       height:320,
@@ -96,7 +108,7 @@ class _WelcomeState extends State<Welcome> {
                           context,
                           MaterialPageRoute(builder: (context) =>  Personalized()),
                           )
-                        },
+                          },
                             style:
                               const ButtonStyle(
                                 backgroundColor: MaterialStatePropertyAll(white),
@@ -108,6 +120,7 @@ class _WelcomeState extends State<Welcome> {
                         ),
                       ),
                     )
+
   ]),
                 ],
               ),
