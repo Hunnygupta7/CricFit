@@ -2,6 +2,7 @@ import 'package:cricfit/colors.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
+
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
