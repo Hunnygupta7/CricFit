@@ -1,7 +1,11 @@
 import 'package:cricfit/searchAccount.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+<<<<<<< HEAD
 import 'Personalized.dart';
+=======
+
+>>>>>>> origin/Vijay_Branch1
 import 'colors.dart';
 
 
@@ -33,6 +37,7 @@ class _WelcomeState extends State<Welcome> {
                   Column(
 
                   children: [
+<<<<<<< HEAD
                   Row(children: [
                   Image.asset(
                         "assets/icon.png",
@@ -45,6 +50,20 @@ class _WelcomeState extends State<Welcome> {
                   TextStyle(fontWeight: FontWeight.bold, color: orange,fontSize: 34.2),
                   )
                   ]),
+=======
+            Row(children: [
+            Image.asset(
+                  "assets/icon.png",
+                  width: 35,
+                  height: 35,
+            ),
+          const Text(
+            " CricFit",
+            style:
+            TextStyle(fontWeight: FontWeight.bold, color: orange,fontSize: 34.2),
+          )
+          ]),
+>>>>>>> origin/Vijay_Branch1
                     Image.asset("assets/Welcome.png",
                     width:350,
                       height:320,
@@ -92,10 +111,14 @@ class _WelcomeState extends State<Welcome> {
                         child: ElevatedButton(
 
                           onPressed: ()=>{
+<<<<<<< HEAD
                           Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) =>  Personalized()),
                           )
+=======
+                          print("Hello")
+>>>>>>> origin/Vijay_Branch1
                         },
                             style:
                               const ButtonStyle(
@@ -108,6 +131,10 @@ class _WelcomeState extends State<Welcome> {
                         ),
                       ),
                     )
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/Vijay_Branch1
   ]),
                 ],
               ),
