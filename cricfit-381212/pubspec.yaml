@@ -81,6 +81,14 @@ flutter:
     - assets/LetsGo.png
     - assets/Personlaize.png
     - assets/Welcome.png
+    - assets/Home.png
+    - assets/Home_Selected.png
+    - assets/Notification.png
+    - assets/Notification_Selected.png
+    - assets/Excercise.png
+    - assets/Excercise_Selected.png
+    - assets/Account.png
+    - assets/Account_Selected.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
