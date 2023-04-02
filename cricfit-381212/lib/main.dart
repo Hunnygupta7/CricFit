@@ -6,6 +6,7 @@ import 'package:cricfit/verifyaccount.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'Personalized.dart';
+import 'Profile.dart';
 import 'SplashScreen/splash.dart';
 
 void main() {
@@ -24,6 +25,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           fontFamily: GoogleFonts.montserrat().fontFamily,
         ),
-        home: Welcome());
+        home: Profile());
   }
 }
