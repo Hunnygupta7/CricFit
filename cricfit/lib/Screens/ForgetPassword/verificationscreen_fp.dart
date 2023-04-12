@@ -2,17 +2,22 @@ import "package:cricfit/Screens/ForgetPassword/thankyouscreen_fp.dart";
 import "package:flutter/material.dart";
 import "package:flutter_otp_text_field/flutter_otp_text_field.dart";
 import "package:google_fonts/google_fonts.dart";
+import 'package:email_otp/email_otp.dart';
 
 import "../../Constants/colors.dart";
 
 class VerificationScreenFP extends StatefulWidget {
-  const VerificationScreenFP({super.key});
+  final email;
+  const VerificationScreenFP({super.key, required this.email});
 
   @override
   State<VerificationScreenFP> createState() => _VerificationScreenFPState();
 }
 
 class _VerificationScreenFPState extends State<VerificationScreenFP> {
+  EmailOTP myauth = EmailOTP();
+  final code = '';
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,39 +93,44 @@ class _VerificationScreenFPState extends State<VerificationScreenFP> {
                     //handle validation or checks here
                   },
                   //runs when every textfield is filled
-                  onSubmit: (String verificationCode) {
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            title: const Text("Verification Code"),
-                            content: Text('Code entered is $verificationCode'),
-                          );
-                        });
+                  onSubmit: (String verificationCode) async {
+                    if (await myauth.verifyOTP(
+                            otp: verificationCode.toString()) ==
+                        true) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        backgroundColor: Colors.green,
+                        content: Text(
+                          "OTP is verified",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ThankyouScreenFP()));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        backgroundColor: Colors.red,
+                        content: Text("Invalid OTP",
+                            style: TextStyle(color: Colors.white)),
+                      ));
+                    }
                   }, // end onSubmit
                 ),
                 const SizedBox(
                   height: 30,
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ThankyouScreenFP()));
-                  },
-                  child: Container(
-                    width: 350,
-                    height: 50,
-                    decoration: const BoxDecoration(
-                        color: textColor,
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: const Center(
-                      child: Text(
-                        "VERIFY NOW",
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
+                Container(
+                  width: 350,
+                  height: 50,
+                  decoration: const BoxDecoration(
+                      color: textColor,
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                  child: const Center(
+                    child: Text(
+                      "VERIFY NOW",
+                      style: TextStyle(
+                        color: Colors.white,
                       ),
                     ),
                   ),
@@ -128,18 +138,58 @@ class _VerificationScreenFPState extends State<VerificationScreenFP> {
                 const SizedBox(
                   height: 10,
                 ),
-                Container(
-                  width: 350,
-                  height: 50,
-                  decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                  child: const Center(
-                    child: Text(
-                      "RESEND CODE",
-                      style: TextStyle(
-                        color: textColor,
-                      ),
+                GestureDetector(
+                  onTap: () async {
+                    setState(() {
+                      isLoading = true;
+                    });
+
+                    myauth.setConfig(
+                        appEmail: "hackersvilla776@gmail.com",
+                        appName: "Email OTP",
+                        userEmail: widget.email,
+                        otpLength: 4,
+                        otpType: OTPType.digitsOnly);
+
+                    if (await myauth.sendOTP() == true) {
+                      setState(() {
+                        isLoading = false;
+                      });
+
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        backgroundColor: Colors.green,
+                        content: Text("OTP has been sent",
+                            style: TextStyle(
+                              color: Colors.white,
+                            )),
+                      ));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        backgroundColor: Colors.red,
+                        content: Text("OTP sent failed",
+                            style: TextStyle(
+                              color: Colors.white,
+                            )),
+                      ));
+                    }
+                  },
+                  child: Container(
+                    width: 350,
+                    height: 50,
+                    decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    child: Center(
+                      child: isLoading
+                          ? const CircularProgressIndicator(
+                              color: Colors.white,
+                            )
+                          : const Text(
+                              "RESEND CODE",
+                              style: TextStyle(
+                                color: textColor,
+                              ),
+                            ),
                     ),
                   ),
                 ),

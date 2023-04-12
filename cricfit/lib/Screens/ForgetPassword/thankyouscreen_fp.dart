@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,6 +12,10 @@ class ThankyouScreenFP extends StatefulWidget {
 }
 
 class _ThankyouScreenFPState extends State<ThankyouScreenFP> {
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+  final User? user = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,6 +80,7 @@ class _ThankyouScreenFPState extends State<ThankyouScreenFP> {
                 SizedBox(
                   width: double.infinity,
                   child: TextField(
+                    controller: passwordController,
                     decoration: InputDecoration(
                       suffixIcon: const Icon(Icons.visibility),
                       hintText: "Password",
@@ -94,6 +100,7 @@ class _ThankyouScreenFPState extends State<ThankyouScreenFP> {
                 SizedBox(
                   width: double.infinity,
                   child: TextField(
+                    controller: confirmPasswordController,
                     decoration: InputDecoration(
                       suffixIcon: const Icon(Icons.visibility),
                       hintText: "Confirm Password",
@@ -111,7 +118,40 @@ class _ThankyouScreenFPState extends State<ThankyouScreenFP> {
                   height: 10,
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () async {
+                    if (passwordController.text ==
+                        confirmPasswordController.text) {
+                      try {
+                        await user!.updatePassword("new-password");
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                              backgroundColor: Colors.green,
+                              content: Text(
+                                "Password updated",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              )),
+                        );
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            backgroundColor: Colors.red,
+                            content: Text(
+                              "Failed to update password",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        );
+                      }
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text("Passwords do not match"),
+                        ),
+                      );
+                    }
+                  },
                   child: Container(
                     width: 350,
                     height: 50,

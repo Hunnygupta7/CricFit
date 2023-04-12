@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1054402422208",
+    "project_id": "cricfit-49338",
+    "storage_bucket": "cricfit-49338.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054402422208:android:155bfe277966dd9bdf9425",
+        "android_client_info": {
+          "package_name": "com.example.cricfit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1054402422208-j4nt7vfi29tpht8v09q9jp770es63ilf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmwz26gnlZR9gGJk7dZtKdLeH8iplMz98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1054402422208-j4nt7vfi29tpht8v09q9jp770es63ilf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

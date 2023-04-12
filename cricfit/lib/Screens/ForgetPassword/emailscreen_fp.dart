@@ -2,6 +2,7 @@ import 'package:cricfit/Constants/colors.dart';
 import 'package:cricfit/Screens/ForgetPassword/verificationscreen_fp.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:email_otp/email_otp.dart';
 
 class EmailScreenFP extends StatefulWidget {
   const EmailScreenFP({super.key});
@@ -11,6 +12,9 @@ class EmailScreenFP extends StatefulWidget {
 }
 
 class _EmailScreenFPState extends State<EmailScreenFP> {
+  EmailOTP myauth = EmailOTP();
+  TextEditingController emailController = TextEditingController();
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +44,7 @@ class _EmailScreenFPState extends State<EmailScreenFP> {
                   height: 30,
                 ),
                 const Text(
-                  "Type your E-mail, Phone Number, or Username",
+                  "Type your E-mail",
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
@@ -72,9 +76,10 @@ class _EmailScreenFPState extends State<EmailScreenFP> {
                 const SizedBox(
                   height: 10,
                 ),
-                TextField(
+                TextFormField(
+                  controller: emailController,
                   decoration: InputDecoration(
-                    hintText: "E-mail / Phone Number / Username",
+                    hintText: "E-mail ",
                     fillColor: Colors.white,
                     filled: true,
                     hintStyle: GoogleFonts.montserrat(
@@ -92,12 +97,59 @@ class _EmailScreenFPState extends State<EmailScreenFP> {
                   height: 30,
                 ),
                 GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const VerificationScreenFP()));
+                  onTap: () async {
+                    if (emailController.text.isNotEmpty) {
+                      setState(() {
+                        isLoading = true;
+                      });
+
+                      myauth.setConfig(
+                          appEmail: "hackersvilla776@gmail.com",
+                          appName: "Email OTP",
+                          userEmail: emailController.text,
+                          otpLength: 4,
+                          otpType: OTPType.digitsOnly);
+
+                      if (await myauth.sendOTP() == true) {
+                        setState(() {
+                          isLoading = false;
+                        });
+
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          backgroundColor: Colors.green,
+                          content: Text("OTP has been sent",
+                              style: TextStyle(
+                                color: Colors.white,
+                              )),
+                        ));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => VerificationScreenFP(
+                              email: emailController.text,
+                            ),
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          backgroundColor: Colors.red,
+                          content: Text("OTP sent failed",
+                              style: TextStyle(
+                                color: Colors.white,
+                              )),
+                        ));
+                      }
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        backgroundColor: Colors.red,
+                        content: Text("Please enter your email",
+                            style: TextStyle(
+                              color: Colors.white,
+                            )),
+                      ));
+                    }
                   },
                   child: Container(
                     width: 350,
@@ -105,13 +157,17 @@ class _EmailScreenFPState extends State<EmailScreenFP> {
                     decoration: const BoxDecoration(
                         color: textColor,
                         borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: const Center(
-                      child: Text(
-                        "SEARCH",
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
+                    child: Center(
+                      child: isLoading
+                          ? const CircularProgressIndicator(
+                              color: textColor,
+                            )
+                          : const Text(
+                              "SEND OTP",
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
                     ),
                   ),
                 ),
