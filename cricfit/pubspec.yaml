@@ -26,10 +26,11 @@ environment:
 # consider running `flutter pub upgrade --major-versions`. Alternatively,
 # dependencies can be manually updated by changing the version numbers below to
 # the latest version available on pub.dev. To see which dependencies have newer
+
 # versions available, run `flutter pub outdated`.
 dependencies:
   country_list_picker: ^1.0.2
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.5
   email_otp: ^2.0.1
   firebase_auth: ^4.4.0
   firebase_core: ^2.9.0
@@ -39,9 +40,9 @@ dependencies:
   flutter_otp_text_field: ^1.1.1
   google_fonts: ^4.0.3
   lottie: ^2.2.0
+  persistent_bottom_nav_bar_v2: ^4.2.8
   show_up_animation: ^2.0.0
   simple_animation_progress_bar: ^1.2.0
-
 dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
@@ -74,6 +75,13 @@ flutter:
     - assets/images/role2.png
     - assets/images/role3.png
     - assets/videos/squat.gif
+    - assets/images/leg.png
+    - assets/images/plank.png
+    - assets/images/belly_fat.png
+    - assets/images/Image.png
+    - assets/images/bottle_7.png
+    - assets/images/ball_8.png
+    - assets/images/box_12.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
