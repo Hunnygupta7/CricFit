@@ -1,5 +1,7 @@
 import 'package:cricfit/Constants/colors.dart';
+import 'package:cricfit/Screens/InAppScreens/MainScreens/excersise.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 
 class MainScreen extends StatefulWidget {
@@ -71,75 +73,87 @@ class _MainScreenState extends State<MainScreen> {
   Widget exerciseCard() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Stack(
-        alignment: Alignment.topRight,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: const [
-                  BoxShadow(
-                      color: Colors.grey,
-                      blurRadius: 0.01,
-                      offset: Offset(0, 5))
-                ]),
-            child: Row(
-              children: [
-                Image.asset(
-                  "assets/videos/squat.gif",
-                  height: 100,
-                  width: 100,
-                ),
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  const Text(
-                    "High Stepping",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w200,
-                      fontSize: 20,
-                    ),
+      child: GestureDetector(
+        onTap: () {
+          pushNewScreen(
+            context,
+            screen: const ExcersiseScreen(),
+            withNavBar: false, // OPTIONAL VALUE. True by default.
+            pageTransitionAnimation: PageTransitionAnimation.cupertino,
+          );
+        },
+        child: Stack(
+          alignment: Alignment.topRight,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: const [
+                    BoxShadow(
+                        color: Colors.grey,
+                        blurRadius: 0.01,
+                        offset: Offset(0, 5))
+                  ]),
+              child: Row(
+                children: [
+                  Image.asset(
+                    "assets/videos/squat.gif",
+                    height: 100,
+                    width: 100,
                   ),
-                  const Text(
-                    "3 sets of 15 reps on each leg",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontWeight: FontWeight.w200,
-                      fontSize: 12,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  SimpleAnimationProgressBar(
-                    height: 20,
-                    width: 200,
-                    backgroundColor: Color(0xffFBCEB1),
-                    foregrondColor: textColor,
-                    ratio: 0.5,
-                    direction: Axis.horizontal,
-                    curve: Curves.fastLinearToSlowEaseIn,
-                    duration: const Duration(seconds: 3),
-                    borderRadius: BorderRadius.circular(4),
-                  )
-                ])
-              ],
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "High Stepping",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w200,
+                            fontSize: 20,
+                          ),
+                        ),
+                        const Text(
+                          "3 sets of 15 reps on each leg",
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w200,
+                            fontSize: 12,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        SimpleAnimationProgressBar(
+                          height: 20,
+                          width: 200,
+                          backgroundColor: Color(0xffFBCEB1),
+                          foregrondColor: textColor,
+                          ratio: 0.5,
+                          direction: Axis.horizontal,
+                          curve: Curves.fastLinearToSlowEaseIn,
+                          duration: const Duration(seconds: 3),
+                          borderRadius: BorderRadius.circular(4),
+                        )
+                      ])
+                ],
+              ),
             ),
-          ),
-          Container(
-            height: 20,
-            width: 120,
-            alignment: Alignment.center,
-            decoration: const BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10),
-                )),
-            child: const Text("Intermediate",
-                style: TextStyle(color: Colors.white)),
-          ),
-        ],
+            Container(
+              height: 20,
+              width: 120,
+              alignment: Alignment.center,
+              decoration: const BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10),
+                  )),
+              child: const Text("Intermediate",
+                  style: TextStyle(color: Colors.white)),
+            ),
+          ],
+        ),
       ),
     );
   }
