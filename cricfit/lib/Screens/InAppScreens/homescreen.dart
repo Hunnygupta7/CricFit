@@ -1,12 +1,12 @@
 import 'package:cricfit/Constants/colors.dart';
 import 'package:cricfit/Screens/InAppScreens/MainScreens/exploreScreen.dart';
 import 'package:cricfit/Screens/InAppScreens/MainScreens/mainscreen.dart';
+import 'package:cricfit/Screens/InAppScreens/MainScreens/notificationScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'MainScreens/excersise.dart';
-import 'MainScreens/analyticsScreen.dart';
 import 'MainScreens/profileScreen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return const [
       MainScreen(),
       ExploreScreen(),
-      AnalyticsScreen(),
+      NotificationScreen(),
       ProfileScreen(),
     ];
   }
@@ -48,8 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(CupertinoIcons.chart_bar_alt_fill),
-        title: "Anaytics",
+        icon: const Icon(CupertinoIcons.bell),
+        title: "Notifications",
         activeColorPrimary: const Color(0xffFE735C),
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
