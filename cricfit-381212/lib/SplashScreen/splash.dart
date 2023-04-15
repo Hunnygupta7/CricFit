@@ -2,8 +2,11 @@ import 'dart:async';
 
 import 'package:cricfit/Constants/colors.dart';
 import 'package:cricfit/Screens/Authentication/signin.dart';
+import 'package:cricfit/Screens/InAppScreens/homescreen.dart';
+import 'package:cricfit/Screens/InAppScreens/roleslection.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:show_up_animation/show_up_animation.dart';
 
 class Splash extends StatefulWidget {
@@ -16,11 +19,24 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   @override
   void initState() {
+    getvalue();
     Timer(const Duration(seconds: 5), () {
       Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (context) => const SignInScreen()));
     });
     super.initState();
+  }
+
+  getvalue() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    var value = sharedPreferences.getBool("isLogin");
+    if (value == true) {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+    } else {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+    }
   }
 
   @override

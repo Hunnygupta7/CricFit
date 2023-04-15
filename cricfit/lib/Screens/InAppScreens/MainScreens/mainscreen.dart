@@ -12,6 +12,32 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  List<String> exerciseNames = [
+    "Push Ups",
+    "Pull Ups",
+    "Squats",
+    "Leg Raises",
+    "Plank",
+    "Burpees",
+    "Jumping Jacks",
+    "Mountain Climbers",
+    "Lunges",
+    "Crunches"
+  ];
+
+  List<String> exercisegif = [
+    "assets/videos/pushup.gif"
+        "assets/videos/pullup.gif"
+        "assets/videos/sqauts.gif"
+        "assets/videos/legraises.gif"
+        "assets/videos/plank.gif"
+        "assets/videos/burpees.gif"
+        "assets/videos/jumpingjacks.gif"
+        "assets/videos/mountainclimber.gif"
+        "assets/videos/lunges.gif"
+        "assets/videos/crunches.gif"
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,7 +59,10 @@ class _MainScreenState extends State<MainScreen> {
                 physics: const BouncingScrollPhysics(),
                 itemCount: 10,
                 itemBuilder: (context, index) {
-                  return exerciseCard();
+                  print(exercisegif[index % exercisegif.length]);
+                  return exerciseCard(
+                      exerciseNames[index % exerciseNames.length],
+                      exercisegif[index % exercisegif.length]);
                 },
               ),
             )
@@ -70,7 +99,7 @@ class _MainScreenState extends State<MainScreen> {
         ));
   }
 
-  Widget exerciseCard() {
+  Widget exerciseCard(String names, String exercisegif) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
@@ -98,16 +127,16 @@ class _MainScreenState extends State<MainScreen> {
               child: Row(
                 children: [
                   Image.asset(
-                    "assets/videos/squat.gif",
+                    exercisegif,
                     height: 100,
                     width: 100,
                   ),
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          "High Stepping",
-                          style: TextStyle(
+                        Text(
+                          names,
+                          style: const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w200,
                             fontSize: 20,

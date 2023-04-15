@@ -2,6 +2,7 @@ import 'package:cricfit/Screens/Authentication/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../Constants/colors.dart';
 import '../ForgetPassword/emailscreen_fp.dart';
 import '../onBoardingScreen/welcome.dart';
@@ -158,12 +159,15 @@ class _SignInScreenState extends State<SignInScreen> {
                       if (emailController.text.isNotEmpty ||
                           passwordController.text.isNotEmpty) {
                         if (ischecked == true) {
+                          SharedPreferences sharedPreferences =
+                              await SharedPreferences.getInstance();
                           try {
                             UserCredential userCredential = await FirebaseAuth
                                 .instance
                                 .signInWithEmailAndPassword(
                                     email: emailController.text,
                                     password: passwordController.text);
+                            sharedPreferences.setBool("islogin", true);
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(const SnackBar(
                                     backgroundColor: Colors.red,
@@ -176,6 +180,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 MaterialPageRoute(
                                     builder: (context) => Welcome()));
                           } on FirebaseAuthException catch (e) {
+                            sharedPreferences.setBool("islogin", true);
                             if (e.code == 'user-not-found') {
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(const SnackBar(

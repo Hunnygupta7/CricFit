@@ -2,6 +2,7 @@ import 'package:country_list_picker/country_list_picker.dart';
 import 'package:cricfit/Screens/onBoardingScreen/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../Constants/colors.dart';
 import '../InAppScreens/homescreen.dart';
 
@@ -266,11 +267,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           color: Colors.black,
                                         ),
                                       )));
+                              SharedPreferences prefs =
+                                  await SharedPreferences.getInstance();
                               try {
                                 await FirebaseAuth.instance
                                     .createUserWithEmailAndPassword(
                                         email: _emailController.text,
                                         password: _passwordController.text);
+                                prefs.setBool("islogin", true);
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(const SnackBar(
                                         backgroundColor: Colors.green,
@@ -285,6 +289,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     MaterialPageRoute(
                                         builder: (context) => Welcome()));
                               } catch (e) {
+                                prefs.setBool("islogin", false);
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(const SnackBar(
                                         backgroundColor: Colors.red,
